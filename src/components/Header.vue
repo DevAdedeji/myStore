@@ -6,6 +6,7 @@
       </div>
       <nav>
         <ul>
+          <li><a href="/">Home</a></li>
           <li><a href="/electronics">Electronics</a></li>
           <li><a href="/jewelery">Jewelery</a></li>
           <li><a href="/men">Men's</a></li>
@@ -27,6 +28,7 @@
     <div class="container">
       <nav>
         <ul>
+          <li><a href="/">Home</a></li>
           <li><a href="/electronics">Electronics</a></li>
           <li><a href="/jewelery">Jewelery</a></li>
           <li><a href="/men">Men's</a></li>
