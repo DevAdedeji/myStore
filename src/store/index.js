@@ -12,6 +12,7 @@ export default createStore({
     women: null,
     products: null,
     cartEmpty: true,
+    product: null,
   },
   mutations,
   actions,

@@ -54,4 +54,14 @@ export default {
             throw new Error(error)
         }
     },
+    async getProdctDetail({ commit }, id) {
+        try {
+            const response = await axios.get(`https://fakestoreapi.com/products/${id}`)
+            commit("setProductDetails", response.data)
+            console.log(this.state.product);
+
+        } catch (error) {
+            throw new Error(error)
+        }
+    }
 }

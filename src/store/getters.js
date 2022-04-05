@@ -13,5 +13,6 @@ export default {
     getWomenProducts: (state) => {
         return state.women
     },
-    getCartEmpty: (state) => { return state.cartEmpty }
+    getCartEmpty: (state) => { return state.cartEmpty },
+    getProductDetails: (state) => { return state.product }
 }
