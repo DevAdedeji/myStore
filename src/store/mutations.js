@@ -1,4 +1,5 @@
 export default {
+    setProducts: (state, data) => state.products = data,
     setElectronics: (state, data) => state.electronics = data,
     setJeweleries: (state, data) => state.jeweleries = data,
     setMen: (state, data) => state.men = data,
