@@ -9,7 +9,16 @@
 </template>
 
 <script>
-export default {};
+import { onMounted } from "vue";
+import { useStore } from "vuex";
+export default {
+  setup() {
+    const store = useStore();
+    onMounted(() => {
+      store.dispatch("getElectronics");
+    });
+  },
+};
 </script>
 
 <style lang="scss" scoped>
