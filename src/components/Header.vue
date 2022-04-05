@@ -58,10 +58,13 @@ export default {
 header {
   width: 100%;
   height: 15vh;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
   .container {
     width: 90%;
     margin: 0 auto;
-    border-bottom: 1px solid #808080;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -95,7 +98,7 @@ header {
         align-items: center;
         gap: 20px;
         border: 2px solid var(--primary-color);
-        height: 20px;
+
         border-radius: 5px;
         padding: 10px;
         cursor: pointer;
@@ -109,17 +112,18 @@ header {
 .mobileMenu {
   display: none;
   .container {
-    width: 100%;
     background-color: #fff;
     z-index: 500;
     nav {
       ul {
+        width: 90%;
+        margin: 0 auto;
         li {
           list-style: none;
           padding: 10px 0;
           a {
             text-decoration: none;
-            color: #808080;
+            color: #000;
           }
           a:hover {
             border-bottom: 2px solid var(--primary-color);
@@ -146,6 +150,12 @@ header {
   }
   .mobileMenu.show {
     display: block;
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    height: 10vh;
   }
 }
 </style>
