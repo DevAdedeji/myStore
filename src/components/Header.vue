@@ -14,10 +14,12 @@
         </ul>
       </nav>
       <div class="cart-container">
-        <div class="cart">
-          <img src="../assets/icon-cart.svg" alt="cart icon" />
-          <p>{{ getCartedItem }}</p>
-        </div>
+        <a href="/cart">
+          <div class="cart">
+            <img src="../assets/icon-cart.svg" alt="cart icon" />
+            <p>{{ getCartedItem }}</p>
+          </div>
+        </a>
         <div @click="toggleMenu" class="menuBtn">
           <img src="../assets/icon-menu.svg" alt="icon-menu icon" />
         </div>
@@ -64,6 +66,10 @@ header {
   display: flex;
   align-items: center;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   .container {
     width: 90%;
     margin: 0 auto;
@@ -95,15 +101,19 @@ header {
       display: flex;
       align-items: center;
       gap: 20px;
-      .cart {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        border: 2px solid var(--primary-color);
+      a {
+        text-decoration: none;
+        font-size: 18px;
+        .cart {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          border: 2px solid var(--primary-color);
 
-        border-radius: 5px;
-        padding: 10px;
-        cursor: pointer;
+          border-radius: 5px;
+          padding: 10px;
+          cursor: pointer;
+        }
       }
       .menuBtn {
         display: none;
@@ -113,6 +123,11 @@ header {
 }
 .mobileMenu {
   display: none;
+  position: absolute;
+  top: 15vh;
+  left: 0;
+  right: 0;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
   .container {
     background-color: #fff;
     z-index: 500;
@@ -152,12 +167,16 @@ header {
   }
   .mobileMenu.show {
     display: block;
+    position: fixed;
   }
 }
 
 @media (max-width: 600px) {
   header {
     height: 10vh;
+  }
+  .mobileMenu {
+    top: 10vh;
   }
 }
 </style>

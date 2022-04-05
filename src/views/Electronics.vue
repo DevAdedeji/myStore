@@ -55,6 +55,7 @@ export default {
   padding: 50px 0;
   width: 100%;
   min-height: 100vh;
+  margin-top: 70px;
   background: #f9f9f9;
   .container {
     width: 90%;

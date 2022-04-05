@@ -58,6 +58,7 @@ export default {
   width: 100%;
   min-height: 100vh;
   background: #f9f9f9;
+  margin-top: 70px;
   .container {
     width: 90%;
     margin: 0 auto;
