@@ -18,9 +18,10 @@
         </div>
       </div>
       <div class="products">
-        <Product
+        <HProduct
           v-for="el in products"
           :key="el.id"
+          :category="el.category"
           :productId="el.id"
           :img="el.image"
           :Name="el.title"
@@ -34,7 +35,7 @@
 <script>
 import { computed, onMounted } from "vue";
 import { useStore } from "vuex";
-import Product from "../components/Product.vue";
+import HProduct from "../components/HProduct.vue";
 export default {
   setup() {
     const store = useStore();
@@ -46,7 +47,7 @@ export default {
       products: computed(() => store.getters.getProducts),
     };
   },
-  components: { Product },
+  components: { HProduct },
 };
 </script>
 
@@ -58,80 +59,82 @@ export default {
   .container {
     width: 90%;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     .title {
       text-align: center;
       text-decoration: underline;
       padding-bottom: 40px;
     }
     .loader {
-      .loader {
-        .lds-grid {
-          display: inline-block;
-          position: relative;
-          width: 80px;
-          height: 80px;
+      .lds-grid {
+        display: inline-block;
+        position: relative;
+        width: 80px;
+        height: 80px;
+      }
+      .lds-grid div {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--primary-color);
+        animation: lds-grid 1.2s linear infinite;
+      }
+      .lds-grid div:nth-child(1) {
+        top: 8px;
+        left: 8px;
+        animation-delay: 0s;
+      }
+      .lds-grid div:nth-child(2) {
+        top: 8px;
+        left: 32px;
+        animation-delay: -0.4s;
+      }
+      .lds-grid div:nth-child(3) {
+        top: 8px;
+        left: 56px;
+        animation-delay: -0.8s;
+      }
+      .lds-grid div:nth-child(4) {
+        top: 32px;
+        left: 8px;
+        animation-delay: -0.4s;
+      }
+      .lds-grid div:nth-child(5) {
+        top: 32px;
+        left: 32px;
+        animation-delay: -0.8s;
+      }
+      .lds-grid div:nth-child(6) {
+        top: 32px;
+        left: 56px;
+        animation-delay: -1.2s;
+      }
+      .lds-grid div:nth-child(7) {
+        top: 56px;
+        left: 8px;
+        animation-delay: -0.8s;
+      }
+      .lds-grid div:nth-child(8) {
+        top: 56px;
+        left: 32px;
+        animation-delay: -1.2s;
+      }
+      .lds-grid div:nth-child(9) {
+        top: 56px;
+        left: 56px;
+        animation-delay: -1.6s;
+      }
+      @keyframes lds-grid {
+        0%,
+        100% {
+          opacity: 1;
         }
-        .lds-grid div {
-          position: absolute;
-          width: 16px;
-          height: 16px;
-          border-radius: 50%;
-          background: var(--primary-color);
-          animation: lds-grid 1.2s linear infinite;
-        }
-        .lds-grid div:nth-child(1) {
-          top: 8px;
-          left: 8px;
-          animation-delay: 0s;
-        }
-        .lds-grid div:nth-child(2) {
-          top: 8px;
-          left: 32px;
-          animation-delay: -0.4s;
-        }
-        .lds-grid div:nth-child(3) {
-          top: 8px;
-          left: 56px;
-          animation-delay: -0.8s;
-        }
-        .lds-grid div:nth-child(4) {
-          top: 32px;
-          left: 8px;
-          animation-delay: -0.4s;
-        }
-        .lds-grid div:nth-child(5) {
-          top: 32px;
-          left: 32px;
-          animation-delay: -0.8s;
-        }
-        .lds-grid div:nth-child(6) {
-          top: 32px;
-          left: 56px;
-          animation-delay: -1.2s;
-        }
-        .lds-grid div:nth-child(7) {
-          top: 56px;
-          left: 8px;
-          animation-delay: -0.8s;
-        }
-        .lds-grid div:nth-child(8) {
-          top: 56px;
-          left: 32px;
-          animation-delay: -1.2s;
-        }
-        .lds-grid div:nth-child(9) {
-          top: 56px;
-          left: 56px;
-          animation-delay: -1.6s;
-        }
-        @keyframes lds-grid {
-          0%,
-          100% {
-            opacity: 1;
-          }
-          50% {
-            opacity: 0.5;
-          }
+        50% {
+          opacity: 0.5;
         }
       }
     }
@@ -139,6 +142,26 @@ export default {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
       gap: 30px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .home {
+    .container {
+      .products {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .home {
+    .container {
+      .products {
+        grid-template-columns: 1fr;
+      }
     }
   }
 }

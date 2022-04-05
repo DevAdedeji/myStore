@@ -61,6 +61,10 @@ export default {
   .container {
     width: 90%;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     .title {
       text-align: center;
       h2 {
@@ -142,6 +146,15 @@ export default {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .men {
+    .container {
+      .products {
+        grid-template-columns: 1fr;
+      }
     }
   }
 }

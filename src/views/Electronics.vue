@@ -148,5 +148,14 @@ export default {
     }
   }
 }
+@media (max-width: 600px) {
+  .electronics {
+    .container {
+      .products {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}
 </style>
 

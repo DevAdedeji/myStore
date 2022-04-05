@@ -4,6 +4,7 @@
       <img :src="img" :alt="Name" />
     </div>
     <div class="text">
+      <p class="category">Category: {{ category.toUpperCase() }}</p>
       <p class="name">{{ Name }}...</p>
 
       <p class="price">Price: ${{ price }}</p>
@@ -23,6 +24,7 @@ export default {
     description: String,
     price: Number,
     productId: Number,
+    category: String,
   },
 };
 </script>
@@ -31,6 +33,10 @@ export default {
 .container {
   border-radius: 5px;
   background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: 500px;
   .asset {
     width: 100%;
@@ -48,8 +54,13 @@ export default {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-
     gap: 15px;
+    .category {
+      color: var(--primary-color);
+      font-weight: bolder;
+      padding: 10px 0;
+      align-self: flex-start;
+    }
     .name {
       font-weight: bolder;
       font-size: 20px;
