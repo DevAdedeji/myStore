@@ -17,7 +17,7 @@
         <a href="/cart">
           <div class="cart">
             <img src="../assets/icon-cart.svg" alt="cart icon" />
-            <p>{{ getCartedItem }}</p>
+            <p>{{ getCartedItem.length }}</p>
           </div>
         </a>
         <div @click="toggleMenu" class="menuBtn">
@@ -128,6 +128,7 @@ header {
   left: 0;
   right: 0;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 500;
   .container {
     background-color: #fff;
     z-index: 500;

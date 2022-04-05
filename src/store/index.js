@@ -5,7 +5,6 @@ import mutations from './mutations'
 
 export default createStore({
   state: {
-    cartedItem: 0,
     electronics: null,
     jeweleries: null,
     men: null,
@@ -13,6 +12,7 @@ export default createStore({
     products: null,
     cartEmpty: true,
     product: null,
+    cartItems: [],
   },
   mutations,
   actions,

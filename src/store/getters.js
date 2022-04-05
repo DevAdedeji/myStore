@@ -1,5 +1,5 @@
 export default {
-    getCartedItem: (state) => { return state.cartedItem },
+    getCartedItem: (state) => { return state.cartItems },
     getProducts: (state) => { return state.products },
     getElectronicsProducts: (state) => {
         return state.electronics

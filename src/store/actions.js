@@ -58,10 +58,18 @@ export default {
         try {
             const response = await axios.get(`https://fakestoreapi.com/products/${id}`)
             commit("setProductDetails", response.data)
-            console.log(this.state.product);
+
+            document.querySelector(".loader").style.display = "none"
 
         } catch (error) {
             throw new Error(error)
         }
-    }
+    },
+    addToCart() {
+        this.state.cartedItem += 1
+        this.state.cartItems = this.state.cartItems.concat(this.state.product)
+        console.log(this.state.cartItems);
+        document.getElementById("addBtn").textContent = "Added To Cart"
+        document.getElementById("addBtn").disabled = 'true'
+    },
 }
