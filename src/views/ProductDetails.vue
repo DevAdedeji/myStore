@@ -14,11 +14,11 @@
           <div></div>
         </div>
       </div>
-      <div class="con">
-        <div class="asset" v-if="product">
+      <div class="con" v-if="isProduct">
+        <div class="asset">
           <img :src="product.image" :alt="product.title" />
         </div>
-        <div class="text" v-if="product">
+        <div class="text">
           <p class="name">{{ product.title }}</p>
           <p class="rating">
             Rating: <span> {{ product.rating.rate }}</span>
@@ -39,7 +39,7 @@
 <script>
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
-import { computed, onMounted } from "vue";
+import { computed, onBeforeMount } from "vue";
 
 export default {
   setup() {
@@ -47,7 +47,7 @@ export default {
     const id = route.params.id;
     const store = useStore();
 
-    onMounted(() => {
+    onBeforeMount(() => {
       store.dispatch("getProdctDetail", id);
     });
 
@@ -59,6 +59,7 @@ export default {
 
     return {
       product: computed(() => store.getters.getProductDetails),
+      isProduct: computed(() => store.getters.getIsProduct),
       addToCart,
     };
   },

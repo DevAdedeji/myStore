@@ -15,5 +15,6 @@ export default {
     },
     getCartEmpty: (state) => { return state.cartEmpty },
     getProductDetails: (state) => { return state.product },
-    getCartedItems: (state) => { return state.cartItems }
+    getCartedItems: (state) => { return state.cartItems },
+    getIsProduct: (state) => { return state.isProduct }
 }

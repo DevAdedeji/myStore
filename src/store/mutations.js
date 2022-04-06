@@ -6,4 +6,5 @@ export default {
     setWomen: (state, data) => state.women = data,
     setProductDetails: (state, data) => state.product = data,
     setCartItems: (state, data) => state.cartItems = data,
+    setIsProduct: (state, data) => state.isProduct = data
 }

@@ -56,11 +56,13 @@ export default {
         }
     },
     async getProdctDetail({ commit }, id) {
+        this.state.isProduct = false
         try {
             const response = await axios.get(`https://fakestoreapi.com/products/${id}`)
             commit("setProductDetails", response.data)
 
             document.querySelector(".loader").style.display = "none"
+            this.state.isProduct = true
 
         } catch (error) {
             throw new Error(error)
