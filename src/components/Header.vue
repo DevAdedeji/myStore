@@ -17,7 +17,7 @@
         <a href="/cart">
           <div class="cart">
             <img src="../assets/icon-cart.svg" alt="cart icon" />
-            <p>{{ getCartedItem.length }}</p>
+            <p>{{ itemsLength }}</p>
           </div>
         </a>
         <div @click="toggleMenu" class="menuBtn">
@@ -42,18 +42,22 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { computed } from "@vue/runtime-core";
+import { useStore } from "vuex";
+
 export default {
   name: "HelloWorld",
   setup() {
+    const store = useStore();
     function toggleMenu() {
       document.querySelector(".mobileMenu").classList.toggle("show");
     }
+
     return {
       toggleMenu,
+      itemsLength: computed(() => store.getters.getnumberOfCartedItems),
     };
   },
-  computed: { ...mapGetters(["getCartedItem"]) },
 };
 </script>
 

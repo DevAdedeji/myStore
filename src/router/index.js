@@ -13,7 +13,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Electronics.vue')
+    component: () => import('../views/Electronics.vue')
   },
   {
     path: '/jewelery',
@@ -21,7 +21,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Jewelery.vue')
+    component: () => import('../views/Jewelery.vue')
   },
   {
     path: '/men',
@@ -29,7 +29,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Men.vue')
+    component: () => import('../views/Men.vue')
   },
   {
     path: '/women',
@@ -37,7 +37,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Women.vue')
+    component: () => import('../views/Women.vue')
   },
   {
     path: '/productdetails/:id',
@@ -45,7 +45,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/ProductDetails.vue')
+    component: () => import('../views/ProductDetails.vue')
   },
   {
     path: '/cart',
@@ -53,14 +53,18 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Cart.vue')
+    component: () => import('../views/Cart.vue')
   },
 
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    // always scroll to top
+    return savedPosition ? savedPosition : { top: 0, left: 0 };
+  },
 })
 
 export default router

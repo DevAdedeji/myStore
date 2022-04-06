@@ -66,10 +66,33 @@ export default {
         }
     },
     addToCart() {
-        this.state.cartedItem += 1
-        this.state.cartItems = this.state.cartItems.concat(this.state.product)
-        console.log(this.state.cartItems);
-        document.getElementById("addBtn").textContent = "Added To Cart"
-        document.getElementById("addBtn").disabled = 'true'
+        var products = localStorage.getItem("myStoreCart");
+        if (products === '') {
+            products = Array.from(localStorage.getItem("myStoreCart"))
+            products.push(this.state.product)
+            localStorage.setItem('myStoreCart', JSON.stringify(products))
+            var newProducts = JSON.parse(localStorage.getItem("myStoreCart"))
+
+            this.state.numberOfCartedItems = newProducts.length
+        }
+        else {
+            products = localStorage.getItem("myStoreCart")
+
+            products = products.split('}')
+            console.log(products);
+
+            // products = JSON.parse(localStorage.getItem("myStoreCart"))
+            // const currentProduct = this.state.product
+
+
+            // products.push(currentProduct)
+            // localStorage.setItem('myStoreCart', JSON.stringify(products))
+            // var newProducts = JSON.parse(localStorage.getItem("myStoreCart"))
+
+            // this.state.numberOfCartedItems = newProducts.length
+        }
+
+        // console.log(typeof this.state.product);
+
     },
 }
