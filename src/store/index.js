@@ -12,7 +12,7 @@ export default createStore({
     products: null,
     cartEmpty: true,
     product: null,
-    cartItems: localStorage.setItem("myStoreCart", []),
+    cartItems: [],
     numberOfCartedItems: localStorage.getItem("myStoreCart").length,
   },
   mutations,

@@ -49,11 +49,18 @@ export default {
 
     onMounted(() => {
       store.dispatch("getProdctDetail", id);
+      store.dispatch("addProductToCart");
     });
+
+    function addToCart(e) {
+      e.target.disabled = true;
+      e.target.textContent = "Added To Cart";
+      addProductToCart();
+    }
 
     return {
       product: computed(() => store.getters.getProductDetails),
-      addToCart: () => store.dispatch("addToCart"),
+      addToCart,
     };
   },
 };
