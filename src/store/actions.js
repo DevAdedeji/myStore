@@ -69,6 +69,10 @@ export default {
     async addProductToCart() {
         let cartItems = this.state.cartItems
         cartItems.push(this.state.product)
+        cartItems.filter((item) => {
+            item.id !== item.id
+        })
+
         console.log(cartItems);
     }
 }

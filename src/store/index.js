@@ -13,7 +13,6 @@ export default createStore({
     cartEmpty: true,
     product: null,
     cartItems: [],
-    numberOfCartedItems: localStorage.getItem("myStoreCart").length,
   },
   mutations,
   actions,
