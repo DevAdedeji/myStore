@@ -68,13 +68,14 @@ export default {
             throw new Error(error)
         }
     },
-    async addProductToCart() {
+    async addProductToCart({ commit }) {
+        let currentProduct = this.state.product
         let cartItems = this.state.cartItems
-        cartItems.push(this.state.product)
-        cartItems.filter((item) => {
-            item.id !== item.id
-        })
+        commit("addToCart", currentProduct)
 
         console.log(cartItems);
+
+
+
     }
 }

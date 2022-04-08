@@ -21,7 +21,7 @@
         <div class="text">
           <p class="name">{{ product.title }}</p>
           <p class="rating">
-            Rating: <span> {{ product.rating.rate }}</span>
+            Ratings: <span> {{ product.rating.rate }}</span>
           </p>
           <p class="description">{{ product.description }}</p>
           <p class="price">
@@ -39,7 +39,7 @@
 <script>
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
-import { computed, onBeforeMount } from "vue";
+import { computed, onBeforeMount, ref } from "vue";
 
 export default {
   setup() {
@@ -47,13 +47,13 @@ export default {
     const id = route.params.id;
     const store = useStore();
 
+    let addedToCart = ref(false);
+
     onBeforeMount(() => {
       store.dispatch("getProdctDetail", id);
     });
 
-    function addToCart(e) {
-      e.target.disabled = true;
-      e.target.textContent = "Added To Cart";
+    function addToCart() {
       store.dispatch("addProductToCart");
     }
 

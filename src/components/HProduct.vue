@@ -5,13 +5,13 @@
     </div>
     <div class="text">
       <p class="category">Category: {{ category.toUpperCase() }}</p>
-      <p class="name">{{ Name }}...</p>
+      <p class="name">
+        <router-link :to="{ name: 'ProductDetails', params: { id: productId } }"
+          >{{ Name }}....</router-link
+        >
+      </p>
 
       <p class="price">Price: ${{ price }}</p>
-
-      <router-link :to="{ name: 'ProductDetails', params: { id: productId } }"
-        >Know More</router-link
-      >
     </div>
   </div>
 </template>
