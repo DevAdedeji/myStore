@@ -72,8 +72,6 @@ export default {
         let currentProduct = this.state.product
         let cartItems = this.state.cartItems
 
-
-
         let products = JSON.parse(localStorage.getItem("mytoreCart"))
 
         products.forEach(product => {
@@ -81,10 +79,12 @@ export default {
                 alert("Product Already Added To Cart")
             } else {
                 cartItems.push(currentProduct)
-                localStorage.setItem('myStoreCart', JSON.stringify(cartItems))
+                localStorage.setItem('mytoreCart', JSON.stringify(cartItems))
+
                 commit("setCartAmt", JSON.parse(localStorage.getItem("mytoreCart")))
             }
         })
+
 
 
     },
