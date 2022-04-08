@@ -71,11 +71,27 @@ export default {
     async addProductToCart({ commit }) {
         let currentProduct = this.state.product
         let cartItems = this.state.cartItems
-        commit("addToCart", currentProduct)
-
-        console.log(cartItems);
 
 
 
-    }
+        let products = JSON.parse(localStorage.getItem("mytoreCart"))
+
+        products.forEach(product => {
+            if (product.id === currentProduct.id) {
+                alert("Product Already Added To Cart")
+            } else {
+                cartItems.push(currentProduct)
+                localStorage.setItem('myStoreCart', JSON.stringify(cartItems))
+                commit("setCartAmt", JSON.parse(localStorage.getItem("mytoreCart")))
+            }
+        })
+
+
+    },
+    isCartEmpty() {
+        if (this.state.cartProducts !== 0) {
+            this.state.cartEmpty = false
+            console.log(cartProducts);
+        }
+    },
 }

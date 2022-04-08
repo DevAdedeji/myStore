@@ -10,13 +10,20 @@
 </template>
 
 <script>
-import { computed } from "@vue/runtime-core";
 import { useStore } from "vuex";
+import { computed, onBeforeMount } from "vue";
+
 export default {
   setup() {
     const store = useStore();
+
+    onBeforeMount(() => {
+      store.dispatch("isCartEmpty");
+    });
+
     return {
       empty: computed(() => store.getters.getCartEmpty),
+      items: computed(() => store.getters.getCartedItems),
     };
   },
 };

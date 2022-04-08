@@ -4,13 +4,11 @@
       <img :src="img" :alt="Name" />
     </div>
     <div class="text">
-      <p class="name">{{ Name }}...</p>
+      <router-link :to="{ name: 'ProductDetails', params: { id: productId } }"
+        >{{ Name }}....</router-link
+      >
 
       <p class="price">Price: ${{ price }}</p>
-
-      <router-link :to="{ name: 'ProductDetails', params: { id: productId } }"
-        >Know More</router-link
-      >
     </div>
   </div>
 </template>

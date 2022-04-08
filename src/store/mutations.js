@@ -7,9 +7,5 @@ export default {
     setProductDetails: (state, data) => state.product = data,
     setCartItems: (state, data) => state.cartItems = data,
     setIsProduct: (state, data) => state.isProduct = data,
-    addToCart: (state, data) => state.cartItems.forEach(item => {
-        if (item.id !== data.id) {
-            state.cartItems.push(data)
-        }
-    })
+    setCartAmt: (state, data) => state.cartProducts = data,
 }

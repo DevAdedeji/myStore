@@ -17,7 +17,7 @@
         <a href="/cart">
           <div class="cart">
             <img src="../assets/icon-cart.svg" alt="cart icon" />
-            <p>{{ itemsLength.length }}</p>
+            <p>{{ items.length }}</p>
           </div>
         </a>
         <div @click="toggleMenu" class="menuBtn">
@@ -55,7 +55,7 @@ export default {
 
     return {
       toggleMenu,
-      itemsLength: computed(() => store.getters.getCartedItems),
+      items: computed(() => store.getters.getCartedItems),
     };
   },
 };

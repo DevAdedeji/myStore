@@ -39,7 +39,7 @@
 <script>
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
-import { computed, onBeforeMount, ref } from "vue";
+import { computed, onBeforeMount } from "vue";
 
 export default {
   setup() {
@@ -47,14 +47,14 @@ export default {
     const id = route.params.id;
     const store = useStore();
 
-    let addedToCart = ref(false);
-
     onBeforeMount(() => {
       store.dispatch("getProdctDetail", id);
     });
 
-    function addToCart() {
+    function addToCart(e) {
       store.dispatch("addProductToCart");
+      e.target.textContent = "Added To Cart";
+      e.target.disabled = true;
     }
 
     return {
