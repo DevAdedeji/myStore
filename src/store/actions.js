@@ -79,6 +79,8 @@ export default {
 
             localStorage.setItem('myStoreCarts', JSON.stringify(cartItems))
 
+            this.state.showClearBtn = true
+
             commit("setCartAmt", JSON.parse(localStorage.getItem("myStoreCarts")))
 
 
@@ -97,9 +99,11 @@ export default {
                 localStorage.setItem('myStoreCarts', JSON.stringify(currentProducts))
 
                 commit("setCartAmt", JSON.parse(localStorage.getItem("myStoreCarts")))
+                this.state.showClearBtn = true
 
             } else {
                 alert("Product Already Added To Cart")
+                this.state.showClearBtn = true
             }
             // localStorage.setItem('mytoreCart', JSON.stringify(cartItems))
 
@@ -118,6 +122,22 @@ export default {
         }
     },
     deleteProduct({ commit }, id) {
-        commit("deleteItem", id)
+        let cartProducts = JSON.parse(localStorage.getItem("myStoreCarts"))
+        cartProducts = cartProducts.filter(product => {
+            return product.id !== id
+        })
+
+        cartProducts = JSON.stringify(cartProducts);
+
+        localStorage.setItem("myStoreCarts", cartProducts)
+
+        commit("setCartAmt", JSON.parse(localStorage.getItem("myStoreCarts")))
+    },
+    clearCart({ commit }) {
+        localStorage.setItem("myStoreCarts", '')
+        this.state.cartProducts = 0
+        if (this.state.cartEmpty === true) {
+            document.getElementById('clearBtn').style.display = 'none'
+        }
     }
 }

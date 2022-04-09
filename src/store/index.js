@@ -11,6 +11,7 @@ export default createStore({
     women: null,
     products: null,
     cartEmpty: true,
+    showClearBtn: false,
     product: null,
     isProduct: false,
     cartItems: [],
