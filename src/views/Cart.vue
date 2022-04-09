@@ -5,6 +5,16 @@
         <p>Empty Cart</p>
         <a href="/">Go to Shop</a>
       </div>
+      <section class="products">
+        <CartItem
+          v-for="item in items"
+          :key="item.id"
+          :Img="item.image"
+          :Name="item.title"
+          :Price="item.price"
+          :description="item.description"
+        />
+      </section>
     </div>
   </section>
 </template>
@@ -12,7 +22,7 @@
 <script>
 import { useStore } from "vuex";
 import { computed, onBeforeMount } from "vue";
-
+import CartItem from "../components/CartItem.vue";
 export default {
   setup() {
     const store = useStore();
@@ -26,6 +36,7 @@ export default {
       items: computed(() => store.getters.getCartedItems),
     };
   },
+  components: { CartItem },
 };
 </script>
 
@@ -56,6 +67,9 @@ section {
         padding: 10px 20px;
         border-radius: 10px;
       }
+    }
+    .products {
+      margin-top: 70px;
     }
   }
 }

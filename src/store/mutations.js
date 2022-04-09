@@ -8,4 +8,5 @@ export default {
     setCartItems: (state, data) => state.cartItems = data,
     setIsProduct: (state, data) => state.isProduct = data,
     setCartAmt: (state, data) => state.cartProducts = data,
+    deleteItem: (state, id) => state.cartProducts.filter(product => product.id !== id)
 }

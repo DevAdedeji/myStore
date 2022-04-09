@@ -72,18 +72,41 @@ export default {
         let currentProduct = this.state.product
         let cartItems = this.state.cartItems
 
-        let products = JSON.parse(localStorage.getItem("mytoreCart"))
+        let products = localStorage.getItem("myStoreCarts")
+        if (products === '' || products === null) {
 
-        products.forEach(product => {
-            if (product.id === currentProduct.id) {
-                alert("Product Already Added To Cart")
+            cartItems.push(currentProduct)
+
+            localStorage.setItem('myStoreCarts', JSON.stringify(cartItems))
+
+            commit("setCartAmt", JSON.parse(localStorage.getItem("myStoreCarts")))
+
+
+
+        } else {
+            let currentProducts = JSON.parse(localStorage.getItem('myStoreCarts'))
+
+            let added = false
+            currentProducts.forEach(product => {
+                if (product.id === currentProduct.id) {
+                    added = true
+                }
+            })
+            if (added === false) {
+                currentProducts.push(this.state.product)
+                localStorage.setItem('myStoreCarts', JSON.stringify(currentProducts))
+
+                commit("setCartAmt", JSON.parse(localStorage.getItem("myStoreCarts")))
+
             } else {
-                cartItems.push(currentProduct)
-                localStorage.setItem('mytoreCart', JSON.stringify(cartItems))
-
-                commit("setCartAmt", JSON.parse(localStorage.getItem("mytoreCart")))
+                alert("Product Already Added To Cart")
             }
-        })
+            // localStorage.setItem('mytoreCart', JSON.stringify(cartItems))
+
+            // commit("setCartAmt", JSON.parse(localStorage.getItem("mytoreCart")))
+        }
+
+
 
 
 
@@ -91,7 +114,10 @@ export default {
     isCartEmpty() {
         if (this.state.cartProducts !== 0) {
             this.state.cartEmpty = false
-            console.log(cartProducts);
+            return this.state.cartEmpty
         }
     },
+    deleteProduct({ commit }, id) {
+        commit("deleteItem", id)
+    }
 }

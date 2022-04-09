@@ -14,7 +14,7 @@ export default createStore({
     product: null,
     isProduct: false,
     cartItems: [],
-    cartProducts: JSON.parse(localStorage.getItem("mytoreCart")) || 0,
+    cartProducts: localStorage.getItem("myStoreCarts") ? JSON.parse(localStorage.getItem("myStoreCarts")) : 0,
   },
   mutations,
   actions,
