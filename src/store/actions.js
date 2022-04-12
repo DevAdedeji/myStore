@@ -85,7 +85,7 @@ export default {
             this.state.showClearBtn = true
 
             commit("setCartAmt", JSON.parse(localStorage.getItem("myStoreCarts")))
-            commit("setCartEmpty", false)
+
 
 
         } else {
@@ -103,7 +103,7 @@ export default {
 
                 commit("setCartAmt", JSON.parse(localStorage.getItem("myStoreCarts")))
 
-                commit("setCartEmpty", false)
+
 
             } else {
                 alert("Product Already Added To Cart")
@@ -118,9 +118,7 @@ export default {
 
 
 
-        if (this.state.cartProducts !== 0) {
-            this.state.empty = false
-        }
+
 
     },
 
@@ -136,16 +134,11 @@ export default {
 
         commit("setCartAmt", JSON.parse(localStorage.getItem("myStoreCarts")))
 
-        if (localStorage.getItem("myStoreCarts") === "[]") {
-            commit("setCartEmpty", true)
-        }
 
     },
     isCartEmpty({ commit }) {
         if (localStorage.getItem("myStoreCarts") === "[]" || localStorage.getItem("myStoreCarts") === 0) {
             commit("setCartEmpty", true)
-        } else {
-            commit("setCartEmpty", false)
         }
     }
 }
