@@ -73,6 +73,9 @@ export default {
         let cartItems = this.state.cartItems
 
         let products = localStorage.getItem("myStoreCarts")
+
+
+
         if (products === '' || products === null) {
 
             cartItems.push(currentProduct)
@@ -82,7 +85,7 @@ export default {
             this.state.showClearBtn = true
 
             commit("setCartAmt", JSON.parse(localStorage.getItem("myStoreCarts")))
-
+            commit("setCartEmpty", false)
 
 
         } else {
@@ -99,12 +102,15 @@ export default {
                 localStorage.setItem('myStoreCarts', JSON.stringify(currentProducts))
 
                 commit("setCartAmt", JSON.parse(localStorage.getItem("myStoreCarts")))
-                this.state.showClearBtn = true
+
+                commit("setCartEmpty", false)
 
             } else {
                 alert("Product Already Added To Cart")
-                this.state.showClearBtn = true
+
             }
+
+
             // localStorage.setItem('mytoreCart', JSON.stringify(cartItems))
 
             // commit("setCartAmt", JSON.parse(localStorage.getItem("mytoreCart")))
@@ -112,15 +118,12 @@ export default {
 
 
 
-
-
-    },
-    isCartEmpty() {
         if (this.state.cartProducts !== 0) {
-            this.state.cartEmpty = false
-            return this.state.cartEmpty
+            this.state.empty = false
         }
+
     },
+
     deleteProduct({ commit }, id) {
         let cartProducts = JSON.parse(localStorage.getItem("myStoreCarts"))
         cartProducts = cartProducts.filter(product => {
@@ -132,12 +135,17 @@ export default {
         localStorage.setItem("myStoreCarts", cartProducts)
 
         commit("setCartAmt", JSON.parse(localStorage.getItem("myStoreCarts")))
+
+        if (localStorage.getItem("myStoreCarts") === "[]") {
+            commit("setCartEmpty", true)
+        }
+
     },
-    clearCart({ commit }) {
-        localStorage.setItem("myStoreCarts", '')
-        this.state.cartProducts = 0
-        if (this.state.cartEmpty === true) {
-            document.getElementById('clearBtn').style.display = 'none'
+    isCartEmpty({ commit }) {
+        if (localStorage.getItem("myStoreCarts") === "[]" || localStorage.getItem("myStoreCarts") === 0) {
+            commit("setCartEmpty", true)
+        } else {
+            commit("setCartEmpty", false)
         }
     }
 }

@@ -2,8 +2,8 @@
   <section>
     <div class="container">
       <div class="empty" v-show="empty">
-        <p>Empty Cart</p>
-        <a href="/">Go to Shop</a>
+        <p class="pem">Empty Cart</p>
+        <a class="aem" href="/">Go to Shop</a>
       </div>
       <section class="products">
         <div class="container" v-for="item in items" :key="item.id">
@@ -27,17 +27,13 @@
           <button id="delete" @click="deleteProduct(item.id)">Delete</button>
         </div>
       </section>
-
-      <button v-show="showBtn" @click="clearCart" id="clearBtn">
-        Clear Cart
-      </button>
     </div>
   </section>
 </template>
 
 <script>
 import { useStore } from "vuex";
-import { computed, onBeforeMount, ref } from "vue";
+import { computed, ref, onBeforeMount } from "vue";
 
 export default {
   setup() {
@@ -57,23 +53,18 @@ export default {
       }
     };
 
-    const deleteProduct = (id) => {
-      console.log(id);
-    };
-
     onBeforeMount(() => {
       store.dispatch("isCartEmpty");
     });
 
     return {
-      empty: computed(() => store.getters.getCartEmpty),
-      showBtn: computed(() => store.getters.getBtn),
+      empty: computed(() => store.getters.getEmpty),
       items: computed(() => store.getters.getCartedItems),
+
       Quantity,
       inc,
       dec,
       deleteProduct: (id) => store.dispatch("deleteProduct", id),
-      clearCart: () => store.dispatch("clearCart"),
     };
   },
 };
@@ -140,6 +131,7 @@ section {
             .desc {
               font-size: 15px;
               width: 80%;
+              padding-bottom: 10px;
             }
           }
         }
@@ -167,6 +159,30 @@ section {
           border: none;
           outline: none;
           cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  section {
+    .container {
+      .products {
+        .container {
+          width: 90%;
+          height: 500px;
+          margin: 0 auto;
+          .product {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            img {
+              width: 150px;
+              height: 150px;
+            }
+          }
         }
       }
     }

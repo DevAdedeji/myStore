@@ -13,9 +13,8 @@ export default {
     getWomenProducts: (state) => {
         return state.women
     },
-    getCartEmpty: (state) => { return state.cartEmpty },
     getProductDetails: (state) => { return state.product },
     getCartedItems: (state) => { return state.cartProducts },
     getIsProduct: (state) => { return state.isProduct },
-    getBtn: (state) => { return state.showClearBtn }
+    getEmpty: (state) => { return state.empty }
 }
