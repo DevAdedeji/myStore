@@ -1,9 +1,9 @@
 <template>
   <section>
     <div class="container">
-      <div class="empty" v-show="empty">
-        <p class="pem">Empty Cart</p>
-        <a class="aem" href="/">Go to Shop</a>
+      <div class="empty" v-if="empty">
+        <p>Empty Cart</p>
+        <a href="/">Go to Shop</a>
       </div>
       <section class="products">
         <div class="container" v-for="item in items" :key="item.id">
@@ -58,9 +58,8 @@ export default {
     });
 
     return {
-      empty: computed(() => store.getters.getEmpty),
+      empty: computed(() => store.state.empty),
       items: computed(() => store.getters.getCartedItems),
-
       Quantity,
       inc,
       dec,

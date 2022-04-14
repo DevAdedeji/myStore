@@ -74,7 +74,7 @@ export default {
 
         let products = localStorage.getItem("myStoreCarts")
 
-
+        this.state.empty = false
 
         if (products === '' || products === null) {
 
@@ -110,18 +110,13 @@ export default {
 
             }
 
-
-            // localStorage.setItem('mytoreCart', JSON.stringify(cartItems))
-
-            // commit("setCartAmt", JSON.parse(localStorage.getItem("mytoreCart")))
         }
 
-
-
-
-
+        if (localStorage.getItem("myStoreCarts") !== "[]" || localStorage.getItem("myStoreCarts") !== 0) {
+            commit("setCartEmpty", false)
+            console.log(this.state.empty);
+        }
     },
-
     deleteProduct({ commit }, id) {
         let cartProducts = JSON.parse(localStorage.getItem("myStoreCarts"))
         cartProducts = cartProducts.filter(product => {
@@ -134,11 +129,16 @@ export default {
 
         commit("setCartAmt", JSON.parse(localStorage.getItem("myStoreCarts")))
 
-
+        if (localStorage.getItem("myStoreCarts") === "[]" || localStorage.getItem("myStoreCarts") === 0) {
+            commit("setCartEmpty", true)
+        }
     },
     isCartEmpty({ commit }) {
         if (localStorage.getItem("myStoreCarts") === "[]" || localStorage.getItem("myStoreCarts") === 0) {
             commit("setCartEmpty", true)
+        } else {
+            commit("setCartEmpty", false)
         }
+
     }
 }

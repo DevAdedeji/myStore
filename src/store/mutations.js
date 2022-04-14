@@ -9,5 +9,5 @@ export default {
     setIsProduct: (state, data) => state.isProduct = data,
     setCartAmt: (state, data) => state.cartProducts = data,
     deleteItem: (state, id) => state.cartProducts.filter(product => product.id !== id),
-    setCartEmpty:(state, data)=> state.cartEmpty = data
+    setCartEmpty: (state, data) => state.empty = data
 }
